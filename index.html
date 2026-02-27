@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alfy Raj</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Mansalva&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="public/favicon-light.ico" type="image/x-icon">
+  <link rel="icon" href="public/favicon-light.ico" type="image/x-icon" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="public/favicon-dark.ico" type="image/x-icon" media="(prefers-color-scheme: light)">
+</head>
+<body>
+
+  <div class="bg-layer"></div>
+
+  <canvas id="cursorTrail"></canvas>
+
+  <header class="draw-header" id="drawHeader">
+    <div class="draw-header-inner">
+      <span class="draw-header-label"><img src="public/favicon-light.ico" draggable="false" class="no-highlight"/></span>
+      <div class="draw-controls">
+        <button id="toggleDraw" class="draw-btn" title="Toggle drawing mode">
+          <i class="fa-solid fa-pencil"></i>
+        </button>
+        <button id="clearDraw" class="draw-btn" title="Clear drawings">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="polaroid-container">
+    <div class="polaroid" data-rotation="-6" data-parallax-speed="0.15" style="--accent:#e8d5b7">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/semipalmated-sandpiper.PNG')"></div>
+        <p class="polaroid-caption">semipalmated sandpiper</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="4" data-parallax-speed="0.25" style="--accent:#c9d6bf">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/saltmarsh-sparrow.PNG')"></div>
+        <p class="polaroid-caption">saltmarsh sparrow</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="-3" data-parallax-speed="0.1" style="--accent:#add8e6">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/horseshoe-crab.PNG')"></div>
+        <p class="polaroid-caption">horseshoe crab</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="7" data-parallax-speed="0.2" style="--accent:#ddd5c3">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/mummichog.PNG')"></div>
+        <p class="polaroid-caption">mummichog</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="-8" data-parallax-speed="0.3">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/darner-dragonfly.png')"></div>
+        <p class="polaroid-caption">darner dragonfly</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="5" data-parallax-speed="0.16">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/monarch-butterfly.png')"></div>
+        <p class="polaroid-caption">monarch butterfly</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="1" data-parallax-speed="0.18">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/snowy-egret.PNG'); filter: brightness(0.8) sepia(0.2);"></div>
+        <p class="polaroid-caption">snowy egret</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="2" data-parallax-speed="0.12">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/wood-thrush.PNG'); filter: brightness(0.8) sepia(0.2);"></div>
+        <p class="polaroid-caption">wood thrush</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="-4" data-parallax-speed="0.32">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/baltimore-oriole.PNG'); filter: brightness(0.8) sepia(0.2);"></div>
+        <p class="polaroid-caption">baltimore oriole</p>
+      </div>
+    </div>
+    <div class="polaroid" data-rotation="8" data-parallax-speed="0.4">
+      <div class="polaroid-inner">
+        <div class="polaroid-img" style="background-image:url('public/piping-plover.PNG'); filter: brightness(0.8) sepia(0.2);"></div>
+        <p class="polaroid-caption">piping plover</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="notebook">
+    <div class="notebook-binding no-highlight" >
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+      <div class="binding-ring"><img src="public/notebook-ring.png"/></div>
+    </div>
+
+    <canvas id="drawCanvas"></canvas>
+
+    <div class="notebook-page">
+      <section class="journal-section" id="about">
+        <div class="name-header">
+          <div class="name">
+            <h1 class="journal-title">Alfy Raj</h1>
+          </div>
+          <div class="doodle">
+            <img src="public/doodle1.png" draggable="false" class="no-highlight"/>
+          </div>
+        </div>
+        <p class="journal-date">
+          B.S. Scientific Illustration <br> & B.S. Veterinary Technology
+        </p>
+
+        <div class="journal-entry">
+          <p>
+            Hello! My name is Alfena, but I go by Alfy for short. <br>
+            I am currently a second degree bachelor's student at UMass Amherst 
+            in the Veterinary Technology program with a 
+            Natural Resource Conservation minor, 
+            and my first bachelors is in Scientific Illustration. <br> <br>
+            I have a passion for wildlife, and I want to direct it 
+            towards conservation efforts. 
+            As humans, we are the stewards of this planet. 
+            I believe that we have a duty to not just protect the planet, 
+            but live in harmony with the resources it provides us. 
+            As stewards, every human should have access to the wonders 
+            that are living in their own communities. 
+            No matter where you live, whether its the city, the country or the sea, 
+            you can make a difference. <br> <br>
+            The easiest way to start is to just learn 
+            more about the environment, but a lot of people 
+            aren't able to have a relationship with the earth due to 
+            language, learning, socioeconomic, and more intersectional barriers 
+            that prevent them from engaging with science. 
+            My goal through my art and my career is to make science and learning 
+            about the environment more approachable and easy to learn for people 
+            from varied backgrounds. Conservation is nothing without a community 
+            that is willing to enact change, and it is integral to conservation efforts 
+            to bring scientific communication to a diversity of communities.
+          </p>
+        </div>
+      </section>
+
+      <section class="journal-section" id="experience">
+        <h2 class="section-heading">Experience</h2>
+
+        <div class="experience-entry">
+          <h3>Flight Attendant</h3>
+          <p class="exp-org">Magic Wings, Deerfield MA</p>
+          <p class="exp-date">7/25 – 11/25</p>
+          <p class="exp-description">
+            The butterflies were amazing, but the coolest part of working there 
+            was definitely getting to work with such a variety of other interesting 
+            insects and learning the ins and outs of maintaining a tropical climate in an indoor environment.
+          </p>
+        </div>
+
+        <div class="experience-entry">
+          <h3>Graphics Designer / Community Outreach Fellow</h3>
+          <p class="exp-org">U.S. Fish and Wildlife, Plum Island</p>
+          <p class="exp-date">5/24 - 9/24</p>
+          <p class="exp-description">
+            I loved doing outreach work on the beach! We sat at a table with a bunch of shells, 
+            variations of sand found on the coasts of Plum Island, and some fake eggs and taught 
+            kids who came to the beach about the importants of protecting Piping Plovers, and other ocean life.
+          </p>
+        </div>
+
+        <div class="experience-entry">
+          <h3>Artemis Roehrig - Invasive Forest Insects Laboratory Assistant</h3>
+          <p class="exp-org">University of Massachusetts Amherst</p>
+          <p class="exp-date">8/23 – 5/24</p>
+          <p class="exp-description">
+            I got to learn so much about a type of insect that I didn't even know existed: Adelgids. 
+            They're kind of like aphids, and they produce a type of fluffy wax all over their body to protect themselves. 
+            They're really interesting but unfortunately, they're very harmful to a lot of trees, especially Hemlocks!
+          </p>
+        </div>
+
+        <div class="experience-entry">
+          <h3>Collegiate Esports Program Manager</h3>
+          <p class="exp-org">University of Massachusetts Amherst</p>
+          <p class="exp-date">8/21 – 5/24</p>
+          <p class="exp-description">
+            Video games are a very important part of my out of work life. 
+            I wanted to share the experience of competing in games on a team with as many people as I could, 
+            so I really put a lot of effort into making our eSports club a safe an inclusive space for everyone. 
+          </p>
+        </div>
+
+        <div class="experience-entry">
+          <h3>Jeremy Andersen - Insect Illustrator</h3>
+          <p class="exp-org">University of Massachusetts Amherst</p>
+          <p class="exp-date">1/23 - 5/23</p>
+          <p class="exp-description">
+            Drawing insects made me realize that it is a very useful way for me to learn more about whatever creature 
+            I'm studying! Its an easy way to learn in depth about anatomy and what irregularities might look like.
+          </p>
+        </div>
+      </section>
+
+      <section class="journal-section" id="projects">
+        <h2 class="section-heading">Projects</h2>
+
+        <div class="experience-entry">
+          <h3>Graphics Design through Design Thinking / Social Innovation</h3>
+          <p class="exp-org">University of Massachusetts Amherst</p>
+          <p class="exp-date">8/23 - 12/23</p>
+          <p class="exp-description">
+            Strategized the most effective way to portray creatures and plants 
+            to their intended audience
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Photoshop</span>
+            <span class="project-tag">Procreate</span>
+          </div>
+        </div>
+
+        <div class="experience-entry">
+          <h3>Scientific Illustration for Academic Journal</h3>
+          <p class="exp-org">Under Brinda Sabu</p>
+          <p class="exp-date">11/25</p>
+          <p class="exp-description">
+            Illustrated a scientific representation of a medical phenomenon 
+            that has not been visually recorded in depth
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Illustration</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="journal-section">
+        <h2 class="section-heading">Contact</h2>
+        <div class="contact-info">
+          <div class="email hide">alfenaraj3@<span>gmail.</span><span>secret.</span>com</div>
+          <div class="phone"><p>+1 (603) 417 9699</p></div>
+        </div>
+
+        <div class="cv-section">
+          <a href="public/alfy-resume.pdf" class="cv-link" download>
+            <i class="fa-regular fa-circle-down"></i>
+            <span>Download Resume</span>
+          </a>
+        </div>
+
+        <div class="journal-footer">
+          <p class="copyright">
+            Designed by Alfy Raj + Developed by Alec Xie
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <button id="scrollTop" class="scroll-top-btn" title="Back to top" aria-label="Scroll to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
